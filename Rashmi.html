@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Rashmi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcd5d5;
+            --accent-color: #5d4037;
+            --text-white: #ffffff;
+            --pink-border: #ff85a2;
+            --success-pink: #ff4d6d;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            margin: 0;
+            font-family: 'Fredoka', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.4s ease-out;
+            padding: 20px;
+        }
+
+        .active { display: flex; }
+
+        /* SCREEN 1 BACKGROUND */
+        #screen-home {
+            background: url('https://files.catbox.moe/x31jaq.jpg') center/cover no-repeat;
+            max-width: none;
+        }
+
+        /* SCREEN 2 (PLEASE) BACKGROUND */
+        #screen-please {
+            background: url('https://files.catbox.moe/yyzpnh.jpg') center/cover no-repeat;
+            max-width: none;
+        }
+
+        /* SCREEN 3 (APOLOGY) BACKGROUND */
+        #screen-apology {
+            background: url('https://files.catbox.moe/6o0hre.jpg') center/cover no-repeat;
+            max-width: none;
+        }
+
+        /* SCREEN 4 & 5 (FORGIVE/SUCCESS) BACKGROUND */
+        #screen-forgive, #screen-success {
+            background: url('https://files.catbox.moe/0bd3v2.jpg') center/cover no-repeat;
+            max-width: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .main-box {
+            background-color: rgba(93, 64, 55, 0.85);
+            color: var(--text-white);
+            padding: 25px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .apology-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 450px;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .apology-text {
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            flex: 1;
+        }
+
+        h1 { font-size: 1.1rem; line-height: 1.5; margin: 0; text-transform: uppercase; }
+
+        .button-group { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 380px; position: relative; }
+        
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--text-white);
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Fredoka', sans-serif;
+            transition: 0.2s;
+        }
+
+        .btn-next { width: auto; align-self: flex-end; padding: 10px 25px; margin-top: 15px; }
+
+        /* MADE TRANSPARENT AS REQUESTED */
+        .forgive-card {
+            background: transparent;
+            padding: 20px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .forgive-img { width: 100%; max-width: 280px; border-radius: 15px; margin-bottom: 15px; }
+        
+        /* Added shadow to text for better visibility on transparent background */
+        .forgive-text { 
+            color: #ffffff; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            margin-bottom: 20px; 
+        }
+
+        #no-btn { background-color: #ffb7c5; color: #d81b60; position: relative; }
+
+        #flower-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff0f3;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 1000;
+        }
+
+        .garden-container {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 20px;
+            background: linear-gradient(to top, #76c893 15%, transparent 15%);
+        }
+
+        .flower-svg {
+            width: 70px;
+            height: 250px;
+            transform-origin: bottom center;
+            animation: grow 2.5s ease-out forwards, sway 4s ease-in-out infinite;
+        }
+
+        @keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+        @keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+        .top-text {
+            position: absolute;
+            top: 15%;
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #d81b60;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="screen-home" class="container active">
+        <div class="main-box">
+            <h1>Rashmi, Hope ur doing well.<br> This website exist bcz, i did something stupid.</h1>
+        </div>
+        <div class="button-group">
+            <button class="btn" onclick="showScreen('screen-apology')">Hmm..... Yes 😳</button>
+            <button class="btn" onclick="showScreen('screen-please')">Not interested 🙄</button>
+        </div>
+    </div>
+
+    <div id="screen-please" class="container">
+        <div class="main-box" style="background-color: rgba(255, 77, 109, 0.9);">
+            <h1 style="font-size: 2rem;">PLEASE !! 😭</h1>
+        </div>
+        <img src="https://files.catbox.moe/h5mzf2.png" alt="Crying Kitty" style="width: 180px; margin-bottom: 20px;">
+        <div class="button-group">
+            <button class="btn" onclick="showScreen('screen-home')">Okay, Go back</button>
+        </div>
+    </div>
+
+    <div id="screen-apology" class="container">
+        <div class="apology-content">
+            <div class="apology-text">"I'm really sorry. <br> Sorry i forgot to use my brain that day, <br> sorry “Mu ete self centered act karuthili” 🫣🫣"</div>
+            <img src="https://files.catbox.moe/13zr07.png" alt="Kitty" style="width:110px;">
+        </div>
+        <button class="btn btn-next" onclick="showScreen('screen-forgive')">Next >></button>
+    </div>
+
+    <div id="screen-forgive" class="container">
+        <div class="forgive-card">
+            <img src="https://files.catbox.moe/0s8zjs.jpg" alt="Sad Cat" class="forgive-img">
+            <div class="forgive-text">Will you forgive me?</div>
+            <div class="button-group">
+                <button class="btn" style="background-color: var(--success-pink);" onclick="showScreen('screen-success')">Yes</button>
+                <button class="btn" id="no-btn" onclick="moveButton()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-success" class="container">
+        <div class="forgive-card">
+            <img src="https://files.catbox.moe/31ajzv.jpg" alt="Forgiven" class="forgive-img">
+            <div class="forgive-text">Yay! Thank you Rashmi!</div>
+            <button class="btn" style="background-color: #ff85a2;" onclick="showGarden()">Here a small gift</button>
+        </div>
+    </div>
+
+    <div id="flower-overlay">
+        <div class="top-text">FOR YOU... 🌸<br>HOPE THIS MAKES YOU SMILE!</div>
+        <div class="garden-container" id="garden"></div>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            document.querySelectorAll('.container').forEach(div => div.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('no-btn');
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 50);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function showGarden() {
+            document.getElementById('flower-overlay').style.display = 'flex';
+            const garden = document.getElementById('garden');
+            const colors = ['#ff4d6d', '#ff85a2', '#fb5607', '#ffbe0b', '#f72585'];
+            garden.innerHTML = ''; 
+            
+            for(let i=0; i<6; i++) {
+                const color = colors[i % colors.length];
+                const delay = i * 0.3;
+                const flower = `
+                    <svg class="flower-svg" style="animation-delay: ${delay}s" viewBox="0 0 100 250">
+                        <path d="M50 250 Q40 180 50 120" stroke="#2d6a4f" stroke-width="5" fill="none" />
+                        <path d="M50 180 Q70 160 55 150" fill="#40916c" />
+                        <circle cx="50" cy="120" r="18" fill="${color}" />
+                        <circle cx="50" cy="100" r="12" fill="${color}" opacity="0.9" />
+                        <circle cx="70" cy="120" r="12" fill="${color}" opacity="0.9" />
+                        <circle cx="30" cy="120" r="12" fill="${color}" opacity="0.9" />
+                        <circle cx="50" cy="140" r="12" fill="${color}" opacity="0.9" />
+                        <circle cx="50" cy="120" r="6" fill="#ffd166" />
+                    </svg>`;
+                garden.innerHTML += flower;
+            }
+        }
+    </script>
+</body>
+</html>
